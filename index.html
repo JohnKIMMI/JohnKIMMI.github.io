@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Global Music Visualization</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/topojson@3"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <div class="choropleth">
+    <svg id="choropleth-map" width="700" height="500"></svg>
+    </div>
+
+    
+    <div class="lower-section">
+      <div class="sidebar">
+        <h3>Filter UI</h3>
+        <label for="main-feature">Main Feature:</label>
+        <select id="main-feature">
+          <option value="Danceability">Danceability</option>
+          <option value="Acousticness">Acousticness</option>
+          <option value="duration">Duration</option>
+          <option value="Energy">Energy</option>
+          <option value="Instrumentalness">Instrumentalness</option>
+          <option value="Key">Key</option>
+          <option value="Liveness">Liveness</option>
+          <option value="Loudness">Loudness</option>
+          <option value="Mode">Mode</option>
+          <option value="Speechiness">Speechiness</option>
+          <option value="Tempo">Tempo</option>
+          <option value="TSignature">TSignature</option>
+          <option value="Positiveness">Positiveness</option>
+        </select>
+
+        <label style="margin-top: 12px; display:block;">Select Countries:</label>
+        <div id="country-checkboxes" style="max-height: 500px; overflow-y: auto; border: 1px solid #555; padding: 5px; background: #111;"></div>
+
+        <div style="margin-top: 8px;">
+          <input type="checkbox" id="select-all-countries" />
+          <label for="select-all-countries" style="font-size: 13px;">Select All</label>
+        </div>
+
+        <label for="x-axis-feature" style="margin-top: 12px;">Scatterplot X-Axis:</label>
+        <select id="x-axis-feature">
+          <option value="Danceability">Danceability</option>
+          <option value="Acousticness">Acousticness</option>
+          <option value="duration">Duration</option>
+          <option value="Energy">Energy</option>
+          <option value="Instrumentalness">Instrumentalness</option>
+          <option value="Key">Key</option>
+          <option value="Liveness">Liveness</option>
+          <option value="Loudness">Loudness</option>
+          <option value="Mode">Mode</option>
+          <option value="Speechiness">Speechiness</option>
+          <option value="Tempo">Tempo</option>
+          <option value="TSignature">TSignature</option>
+          <option value="Positiveness">Positiveness</option>
+        </select>
+
+        <label for="y-axis-feature" style="margin-top: 12px;">Scatterplot Y-Axis:</label>
+        <select id="y-axis-feature">
+          <option value="Danceability">Danceability</option>
+          <option value="Acousticness">Acousticness</option>
+          <option value="duration">Duration</option>
+          <option value="Energy">Energy</option>
+          <option value="Instrumentalness">Instrumentalness</option>
+          <option value="Key">Key</option>
+          <option value="Liveness">Liveness</option>
+          <option value="Loudness">Loudness</option>
+          <option value="Mode">Mode</option>
+          <option value="Speechiness">Speechiness</option>
+          <option value="Tempo">Tempo</option>
+          <option value="TSignature">TSignature</option>
+          <option value="Positiveness">Positiveness</option>
+        </select>
+      </div>
+
+      <div class="charts">
+        <div class="chart" id="bar-chart">
+          
+        </div>
+        <div class="chart scatterplot" id="scatterplot-wrapper">
+          <div id="scatter-legend"></div>
+          <div id="scatterplot"></div>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="tooltip"></div>
+
+  <script src="ui.js"></script>
+  <script src="choropleth.js"></script>
+  <script src="bar_chart.js"></script>
+  <script src="scatterplot.js"></script>
+</body>
+</html>

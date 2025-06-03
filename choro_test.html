@@ -1,0 +1,78 @@
+<!-- choropleth.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Choropleth Map - Danceability</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
+  <body>
+    <div id="vis"></div>
+
+    <script type="text/javascript">
+      const spec = {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "width": 900,
+        "height": 450,
+        "data": {
+          "url": "country_avg_features.csv"
+        },
+        "projection": {
+          "type": "equalEarth"
+        },
+        "layer": [
+          {
+            "data": {
+              "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+              "format": {
+                "type": "topojson",
+                "feature": "countries"
+              }
+            },
+            "mark": {
+              "type": "geoshape",
+              "fill": "lightgray",
+              "stroke": "white"
+            }
+          },
+          {
+            "data": {
+              "url": "country_avg_features.csv"
+            },
+            "transform": [
+              {
+                "lookup": "id",
+                "from": {
+                  "data": {
+                    "url": "https://vega.github.io/vega-datasets/data/world-110m.json",
+                    "format": {
+                      "type": "topojson",
+                      "feature": "countries"
+                    }
+                  },
+                  "key": "id"
+                },
+                "as": "geo"
+              }
+            ],
+            "mark": "geoshape",
+            "encoding": {
+              "color": {
+                "field": "Danceability",
+                "type": "quantitative",
+                "title": "Avg Danceability"
+              },
+              "tooltip": [
+                {"field": "id", "type": "nominal"},
+                {"field": "Danceability", "type": "quantitative"}
+              ]
+            }
+          }
+        ]
+      };
+
+      vegaEmbed("#vis", spec);
+    </script>
+  </body>
+</html>

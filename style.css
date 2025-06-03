@@ -1,0 +1,101 @@
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #000;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.choropleth {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #333;
+}
+
+.lower-section {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 200px;
+    background: #111;
+    padding: 10px;
+    box-sizing: border-box;
+    border-right: 2px solid #333;
+}
+
+.charts {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 4px;
+    pointer-events: none;
+    opacity: 0;
+    color: black;
+}
+.chart {
+    flex: 1;
+    background: #222;
+    padding: 10px;
+    overflow:auto;
+    white-space: nowrap;
+    position: relative;
+}
+
+#bar-chart {
+    max-height: 500px;
+}
+
+#bar-chart svg {
+    min-height: 500px;
+}
+
+
+svg {
+    display: block;
+    margin: auto;
+}
+circle {
+    transition: stroke 0.2s ease;
+}
+
+.scatterplot-wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+#scatterplot {
+    flex: 1;
+}
+
+#scatter-legend {
+    float: left;
+    width: 160px;
+    padding: 10px;
+    background-color: #111;
+    color: white;
+    font-size: 12px;
+    overflow-y: auto;
+    max-height: 600px;
+}
